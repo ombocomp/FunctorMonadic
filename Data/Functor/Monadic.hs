@@ -1,19 +1,18 @@
 -- |Helper functions for functors.
 --
 --  These operators are designed to make the interoperation between monadic
---  and pure computations more convenient by allowed them to be chained together
+--  and pure computations more convenient by allowing them to be chained together
 --  without peppering the program with superflouos return statements.
 --
 --  Each function is a pure analogue of a monadic one. The correspondences are
 --  as follows:
---  @
---  >$>   ~  >>=
---  $>    ~  >>
---  <$    ~  <<   (re-exported from Data.Functor)
---  <$<   ~  =<<  (same as Data.Functor.<$>, but with the precedence of >>=)
---  >=$>  ~  >=>
---  <$=<  ~  <=<
---  @
+--
+--  * @>$>   ~  >>=@ (bind)
+--  * @$>    ~  >> @ (throw away left argument)
+--  * @<$    ~  << @   (re-exported from "Data.Functor")
+--  * @<$<   ~  =<< @  (same as 'Data.Functor.<$>', but with the precedence of '>>=')
+--  * @>=$>  ~  >=> @ (Kleisli composition)
+--  * @<$=<  ~  <=< @ (flipped Kleisli composition)
 --
 -- Lastly, '|>' is left-to-right function composition (flipped version of '$').
 module Data.Functor.Monadic (
