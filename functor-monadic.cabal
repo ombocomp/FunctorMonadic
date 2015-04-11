@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                functor-monadic
-version:             0.1.0.1
+version:             0.1.0.2
 synopsis:            Monad-style combinators for functors.
 description:         Monad's bind (>>=, >=>) allows the infix chaining of monadic
                      functions, but no analogues exist for functors. This package

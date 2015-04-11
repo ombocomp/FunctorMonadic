@@ -14,7 +14,8 @@
 --  * @>=$>  ~  >=> @ (Kleisli composition)
 --  * @<$=<  ~  <=< @ (flipped Kleisli composition)
 --
--- Lastly, '|>' is left-to-right function composition (flipped version of '$').
+--  In addition, '|>' and '.>' are the left-to-right versions of '$' and '.',
+--  respectively.
 module Data.Functor.Monadic (
    module Data.Functor,
    (>$>),
@@ -22,9 +23,10 @@ module Data.Functor.Monadic (
    (<$<),
    (>=$>),
    (<$=<),
-   (|>)) where
+   (|>),
+   (.>)) where
 
-import Data.Functor ((<$))
+import Data.Functor ((<$), (<$>))
 
 infixl 1 >$>
 infixl 1 $>
@@ -32,6 +34,7 @@ infixr 1 <$<
 infixl 1 >=$>
 infixr 1 <$=<
 infixl 1 |>
+infixl 1 .>
 
 -- |Flipped 'fmap' for chaining plain functions after a functor in the following
 --  way:
@@ -82,3 +85,7 @@ infixl 1 |>
 -- |Flipped version of '$'.
 (|>) :: a -> (a -> b) -> b
 (|>) = flip ($)
+
+-- |Flipped version '.'.
+(.>) :: (a -> b) -> (b -> c) -> (a -> c)
+(.>) = flip (.)
